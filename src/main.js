@@ -10,15 +10,32 @@ const onClickAdd = () => {
     
     // div生成
     const div = document.createElement("div");
-    div.className = "list-roww";
+    div.className = "list-row";
 
     // p生成
     const p = document.createElement("p");
     p.className = "todo-item";
     p.innerText = inputText;
 
+    // button(完了) 生成
+    const completeButton = document.createElement("button");
+    completeButton.innerText = "完了";
+    completeButton.addEventListener("click", () => {
+        alert("完了");
+    });
+
+    // button(削除) 生成
+    const deleteButton = document.createElement("button");
+    deleteButton.innerText = "削除";
+    deleteButton.addEventListener("click", () => {
+        alert("削除");
+    });
+
     // liタグの子要素に各要素を設定
     div.appendChild(p);
+    div.appendChild(completeButton);
+    div.appendChild(deleteButton);
+
     li.appendChild(div);
 
     // 未完了リストに追加
