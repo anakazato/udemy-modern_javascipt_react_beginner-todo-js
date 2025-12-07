@@ -35,7 +35,13 @@ const createIncompleteTodo = (todo) => {
         const backButton = document.createElement("button");
         backButton.innerText = "戻す";
         backButton.addEventListener("click", ()=>{
+            // TODOの内容を取得し、未完了リストに追加
+            const todoText = backButton.previousElementSibling.innerText;
 
+            // 未完了リストに追加
+            createIncompleteTodo(todoText);
+            // 押された戻すボタンの親にあるliタグを削除
+            backButton.closest("li").remove();
         })
 
         // firstElementChild = div.list-row タグ想定
