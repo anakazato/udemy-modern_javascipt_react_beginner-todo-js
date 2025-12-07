@@ -28,7 +28,10 @@ const onClickAdd = () => {
     const deleteButton = document.createElement("button");
     deleteButton.innerText = "削除";
     deleteButton.addEventListener("click", () => {
-        alert("削除");
+        // 押された削除ボタンの親にあるliタグを未完了リストから削除
+        // closest = 「一番近い」　この要素とその親に（文書ルートに向かって）、指定された CSS セレクターに一致するノードが見つかるまで探索
+        const deleteTarget = deleteButton.closest("li");
+        document.getElementById("incomplete-list").removeChild(deleteTarget);
     });
 
     // liタグの子要素に各要素を設定
