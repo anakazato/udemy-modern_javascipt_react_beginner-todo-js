@@ -21,7 +21,18 @@ const onClickAdd = () => {
     const completeButton = document.createElement("button");
     completeButton.innerText = "完了";
     completeButton.addEventListener("click", () => {
-        alert("完了");
+        const moveTarget = completeButton.closest("li");
+        // 完了TODOではbutton構成が違うので、いまのbuttonを削除
+        completeButton.nextElementSibling.remove();
+        completeButton.remove();
+        // 戻すボタンを生成してdivタグ配下に設定
+        const backButton = document.createElement("button");
+        backButton.innerText = "戻す";
+        // firstElementChild = div.list-row タグ想定
+        moveTarget.firstElementChild.appendChild(backButton);
+        // 完了リストに移動
+        document.getElementById("complete-list").appendChild(moveTarget);
+        // moveTarget.remove(); // moveTarget は参照なのでappendChild で移動の意味になるので removeは不要
     });
 
     // button(削除) 生成
